@@ -1,0 +1,17 @@
+---
+const titulo = Astro.props.titulo;
+const ID = Astro.props.ID;
+---
+
+<li class="flex items-center space-x-2 px-6 py-2">
+  <span
+    class="bg-primary text-primary-content flex items-center justify-center rounded-full p-1"
+  >
+    <span class="icon-[tabler--arrow-right] size-4 rtl:rotate-180"></span>
+  </span>
+  <span class="text-base-content/80">
+    <a href={"#" + ID} class="hover:text-primary transition-colors duration-300"
+      >{titulo}</a
+    >
+  </span>
+</li>

@@ -1,0 +1,155 @@
+---
+/* Layouts */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+/* Text Components */
+import TituloUno from "../../componentes/ui/text/TituloUno.astro";
+import TituloTres from "../../componentes/ui/text/TituloTres.astro";
+import Pgh from "../../componentes/ui/text/Pgh.astro";
+
+import Message from "../../componentes/ui/text/Message.astro";
+import Quote from "../../componentes/ui/text/Quote.astro";
+
+/* Functional Components */
+
+import Accordion from "../../componentes/ui/functional/acordionComponentes/Accordion.astro";
+import ATab from "../../componentes/ui/functional/acordionComponentes/ATab.astro";
+
+/* Recop Section */
+import Recop from "../../componentes/nav/recopComponents/Recop.astro";
+import RecopLi from "../../componentes/nav/recopComponents/RecopLi.astro";
+
+const RecopOne = "que-es-ia";
+const RecopTwo = "para-que-sirve";
+
+/* Const */
+const title = "Definición Universal";
+---
+
+<BaseLayout title={title}>
+  <!-- Recopilatorio -->
+
+  <Recop>
+    <RecopLi ID={RecopOne} titulo="¿Qué es la inteligencia artificial?" />
+    <RecopLi ID={RecopTwo} titulo="¿Qué es la inteligencia artificial?" />
+  </Recop>
+
+  <!-- Recopilatorio -->
+
+  <TituloUno titulo={title} subtitulo="Introducción para entender a la IA" />
+  <Pgh>
+    La raza humana a lo largo de su historia ha desarrollado conocimientos y
+    tecnologías para moldear el mundo a sus necesidades, facilitando así la vida
+    diaria, en este sentido un cúmulo de conocimientos inevitablemente
+    desencadenará nuevos descubrimientos en diferentes campos, este es el caso
+    de la inteligencia artificial que, si bien existe desde hace más de 50 años,
+    no fue hasta hace unos pocos años que está tomó la relevancia suficiente
+    para que se hable de ella en todo lugar y en todo momento.
+  </Pgh>
+
+  <Pgh
+    >Para ello hay que entender primero una serie de conceptos para tener un
+    punto de partida sólido sobre el cual guiarnos y estar así en el mismo
+    contexto cuando hablemos de una cosa u otra.</Pgh
+  >
+
+  <TituloTres ID={RecopOne}> ¿Qué es la inteligencia artificial? </TituloTres>
+
+  <Pgh
+    >Claro, es importante hablar sobre la definición misma del concepto, pero en
+    este caso la respuesta no es clara, no existe un consenso académico ni
+    global sobre una definición única sobre inteligencia artificial, la
+    respuesta que un profesional en este campo te daría sería: <span
+      class="text-primary font-bold underline">depende</span
+    >. Por su puesto, existe una definición inicial propuesta por John McCarthy
+    quien acuñó el término inteligencia artificial en 1956:
+  </Pgh>
+
+  <Quote autor="John McCarthy"
+    >La ciencia e ingeniería de hacer máquinas inteligentes, especialmente
+    programas de computadora inteligentes</Quote
+  >
+
+  <Pgh
+    >No cabe duda que, aunque ilustrativa, esta definición es bastante más
+    histórica que acertada para la gran cantidad de aplicaciones que actualmente
+    le damos en todos los rubros imaginables a esta tecnología, pero entonces
+    ¿de qué depende su definición? del <span class="text-primary font-bold"
+      >contexto</span
+    > en el que se haga está pregunta, claro. Sí hablamos de un entorno cotidiano
+    la definición más cercana a un consenso sobre qué es la inteligencia artificial
+    podría ser la siguiente:</Pgh
+  >
+
+  <Message>
+    Un conjunto de software y hardware especializados para resolver problemas
+    complejos propios de la inteligencia humana.
+  </Message>
+
+  <Pgh>
+    El salto entre una definición y la otra radica principalmente en el
+    planteamiento de “<em>problemas propios de la inteligencia humana</em>”,
+    mientras que en la primera definición se limita a problemas con grandes
+    cantidades de datos que tienen que ser procesadas por un sistema o un
+    programa y considera esto una forma de inteligencia propia de las máquinas,
+    la segunda definición ilustra capacidades humanas simuladas para resolver
+    problemas complejos, como adquirir información del entorno, analizarla,
+    entenderla y tomar decisiones respecto a qué camino es el mejor o el más
+    eficiente para lograr la meta propuesta, y aunque veremos más adelante cómo
+    funciona una inteligencia artificial y eventualmente nos preguntemos si es
+    que piensa como el ser humano.
+  </Pgh>
+
+  <Pgh>
+    Lo cierto es que siempre es importante tener presente que todo esto es solo
+    una simulación de comportamientos humanos, pues tras bambalinas la
+    inteligencia artificial es en esencia un conjunto de algoritmos, lógica, una
+    interfaz amigable y grandes cantidades de código basado en python con
+    modelos estadísticos y matemáticos complejos, lo cual nos lleva a una
+    tercera definición para un contexto más académico y de entornos de
+    desarrollo:
+  </Pgh>
+
+  <Message>
+    Una área de conocimiento multidisciplinaria enfocada a desarrollar modelos
+    de inteligencia que simulan funcionalidades humanas como el pensamiento, el
+    aprendizaje y la resolución de problemas.
+  </Message>
+
+  <Pgh
+    >Este última definición aunque obvia, ilustra una de las principales
+    virtudes de esta nueva área del conocimiento, y es que no es un campo en el
+    que sólo puedan desarrollarse las carreras de programación, existe una
+    relación directa con varias disciplinas que intervienen directamente en el
+    desarrollo de la inteligencia artificial, por nombrar algunas:
+  </Pgh>
+
+  <Accordion>
+    <ATab ID="mat-fis-area" titulo="Matemáticas y física"> hola </ATab>
+    <ATab ID="ing-area" titulo="Ingenierías">hola </ATab>
+    <ATab ID="cien-jurid-area" titulo="Ciencias jurídicas">hola </ATab>
+    <ATab ID="psico-area" titulo="Psicología">hola </ATab>
+    <ATab ID="socio-area" titulo="Sociología">hola </ATab>
+    <ATab ID="dis-area" titulo="Diseño">hola </ATab>
+    <ATab ID="cien-poli-area" titulo="Ciencias políticas">hola </ATab>
+  </Accordion>
+
+  <Pgh
+    >En resumidas cuentas, la inteligencia artificial es un nuevo <span
+      class="text-primary font-bold">paradigma de la historia reciente</span
+    > que ha llegado a todas las actividades humanas y está incorporada en mayor
+    o menor medida en la mayoría de sistemas informáticos que usamos cotidianamente,
+    su diversidad de aplicaciones y lo abstracto de su funcionamiento es lo que nos
+    hace difícil su definición, pero lo cierto es que es una tecnología que llegó
+    para quedarse, y como educadores adaptarnos para adquirir nuevas formas de impartir
+    cátedra en la era de la inteligencia artificial es imperativo.</Pgh
+  >
+
+  <TituloTres ID={RecopTwo}>¿De dónde viene?</TituloTres>
+
+  <TituloTres>¿Por qué es tan importante?</TituloTres>
+
+  <TituloTres>¿Para qué nos sirve?</TituloTres>
+
+  <TituloTres>¿¿Es cierto que nos va a dejar sin trabajo?</TituloTres>
+</BaseLayout>

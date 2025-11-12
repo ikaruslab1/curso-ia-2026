@@ -1,0 +1,372 @@
+---
+import ThemeChengeller from "./components/ThemeChengeller.astro";
+import DropdownMenu from "./components/DropdownMenu.astro";
+import DropdownMenuNoOverlay from "./components/DropdownMenuNoOverlay.astro";
+---
+
+<!--  -->
+<div
+  class="fixed
+  md:relative
+  bottom-4
+  right-4
+  z-50
+  bg-secondary/40
+  rounded-full
+  p-2 md:p-2
+  md:bg-secondary/0
+  overlay-minified:md:mb-0
+  overlay-minified:lg:mb-0
+  overlay-minified:xl:mb-0
+  md:mb-16 lg:mb-24 xl:mb-8"
+>
+  <div class="hidden md:block">
+    <nav
+      class="navbar
+            rounded-box
+            shadow-base-300/20
+            shadow-sm
+            fixed w-screen
+            overlay-minified:hidden"
+    >
+      <div class="w-full md:flex md:items-center md:gap-2">
+        <div class="flex flex-auto items-center justify-between">
+          <div class="navbar-start items-center justify-between max-md:w-full">
+            <a
+              class="link
+              link-neutral
+              text-primary
+              text-3xl
+              font-mono
+              font-bold
+              no-underline"
+              href="#"
+            >
+              CasaTorres
+            </a>
+          </div>
+        </div>
+        <div
+          id="default-navbar-collapse"
+          class="md:navbar-end collapse hidden grow basis-full overflow-hidden transition-[height] duration-300 max-md:w-full"
+        >
+          <ul
+            class="menu md:menu-horizontal gap-2 p-0 text-base max-md:mt-2 flex items-center"
+          >
+            <li><a href="#">Inicio</a></li>
+            <li><ThemeChengeller /></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!------------------------- Sidebar ------------------------->
+  <button
+    type="button"
+    class="btn btn-text max-sm:btn-square md:hidden"
+    aria-haspopup="dialog"
+    aria-expanded="false"
+    aria-controls="collapsible-mini-sidebar"
+    data-overlay="#collapsible-mini-sidebar"
+  >
+    <span class="icon-[tabler--menu-2] size-6 text-white"></span>
+  </button>
+</div>
+
+<aside
+  id="collapsible-mini-sidebar"
+  class="overlay-minified:pt-0
+        pt-4 md:pt-22
+        [--auto-close:md]
+        overlay
+        overlay-minified:w-17
+        md:shadow-none
+        overlay-open:translate-x-0
+        drawer drawer-start hidden
+        w-66 md:z-0
+        md:flex
+        md:translate-x-0
+        border-e
+        border-base-content/20
+        h-screen z-50"
+  role="dialog"
+  tabindex="-2"
+>
+  <div
+    class="drawer-header
+          flex
+          items-center
+          justify-between
+          gap-3
+          overlay-minified:px-3.75
+          py-2
+          w-full"
+  >
+    <div class="overlay-minified:hidden">
+      <p>
+        <span class="text-xs bg-primary/50 py-1 px-2 rounded-full">Curso</span>
+      </p>
+      <h3 class="drawer-title text-2xl font-bold">Docencia 5.0</h3>
+      <p class="leading-4 text-balance">
+        Integración Ética y Práctica de la Inteligencia Artificial
+      </p>
+    </div>
+    <div class="hidden md:block">
+      <!-- Toggle Button -->
+      <button
+        type="button"
+        class="btn btn-circle btn-text"
+        aria-haspopup="dialog"
+        aria-expanded="false"
+        aria-controls="collapsible-mini-sidebar"
+        aria-label="Minify navigation"
+        data-overlay-minifier="#collapsible-mini-sidebar"
+      >
+        <span class="icon-[tabler--menu-2] size-5"></span>
+        <span class="sr-only">Navigation Toggle</span>
+      </button>
+      <!-- End Toggle Button -->
+    </div>
+  </div>
+  <div class="drawer-body px-2 pt-4">
+    <ul class="menu p-0">
+      <DropdownMenu
+        title="Introducción"
+        icon="icon-[ic--baseline-emoji-flags] size-5"
+      >
+        <DropdownMenuNoOverlay
+          title="Conceptos Básicos"
+          icon="icon-[la--book] size-5"
+        >
+          <li>
+            <a href="defUniversal">
+              <span class="icon-[la--arrow-right]"></span>
+              Definición universal
+            </a>
+          </li>
+          <li>
+            <a href="tiposdeingeligencia">
+              <span class="icon-[la--arrow-right]"></span>
+              Tipos de inteligencias
+            </a>
+          </li>
+          <li>
+            <a href="piensa">
+              <span class="icon-[la--arrow-right]"></span>
+              ¿La inteligencia artificial es piensa?
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[la--arrow-right]"></span>
+              Alcances de esta tecnología en la vida diaria
+            </a>
+          </li>
+        </DropdownMenuNoOverlay>
+        <DropdownMenuNoOverlay
+          title="Modelos de IA"
+          icon="icon-[ic--baseline-emoji-flags] size-5"
+        >
+          <li>
+            <a href="funcionamiento">
+              <span class="icon-[la--arrow-right]"></span>
+              Funcionamiento
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[la--arrow-right]"></span>
+              Modelos generativos
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[la--arrow-right]"></span>
+              Modelos discriminatorios
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[la--arrow-right]"></span>
+              Arquitectura <em>Transformer</em>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[la--arrow-right]"></span>
+              <em>Attention Mechanism</em>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[la--arrow-right]"></span>
+              <em>Embeddings</em>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[la--arrow-right]"></span>
+              Sistema de vectores
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[la--arrow-right]"></span>
+              Sistema de coordenadas
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[la--arrow-right]"></span>
+              Corpus de datos
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[la--arrow-right]"></span>
+              Entrenamiento
+            </a>
+          </li>
+        </DropdownMenuNoOverlay>
+        <DropdownMenuNoOverlay
+          title="Consideraciones"
+          icon="icon-[ic--baseline-emoji-flags] size-5"
+        >
+          <li>
+            <a href="#">
+              <span class="icon-[la--arrow-right]"></span>
+              Alucinaciones
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[la--arrow-right]"></span>
+              Marco legal
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[la--arrow-right]"></span>
+              Ética
+            </a>
+          </li>
+        </DropdownMenuNoOverlay>
+      </DropdownMenu>
+
+      <!-- Prompt E -->
+
+      <li
+        class="dropdown relative [--adaptive:none] [--strategy:static] overlay-minified:[--adaptive:adaptive] overlay-minified:[--strategy:fixed] overlay-minified:[--offset:15] overlay-minified:[--trigger:hover] overlay-minified:[--placement:right-start]"
+      >
+        <button
+          id="dropdown-Two"
+          type="button"
+          class="dropdown-toggle"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-label="Dropdown"
+        >
+          <span class="icon-[tabler--apps] size-5"></span>
+          <span class="overlay-minified:hidden">Prompt Engineering</span>
+          <span
+            class="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4 overlay-minified:hidden"
+          ></span>
+        </button>
+        <ul
+          class="dropdown-menu mt-0 shadow-none overlay-minified:shadow-md overlay-minified:shadow-base-300/20 dropdown-open:opacity-100 hidden min-w-60 overlay-minified:before:absolute overlay-minified:before:-start-4 overlay-minified:before:top-0 overlay-minified:before:h-full overlay-minified:before:w-4 before:bg-transparent"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="dropdown-default"
+        >
+          <li>
+            <a href="#">
+              <span class="icon-[tabler--mail] size-5"></span>
+              Email
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[tabler--calendar] size-5"></span>
+              Calendar
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li
+        class="dropdown relative [--adaptive:none] [--strategy:static] overlay-minified:[--adaptive:adaptive] overlay-minified:[--strategy:fixed] overlay-minified:[--offset:15] overlay-minified:[--trigger:hover] overlay-minified:[--placement:right-start]"
+      >
+        <button
+          id="dropdown-Three"
+          type="button"
+          class="dropdown-toggle"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-label="Dropdown"
+        >
+          <span class="icon-[tabler--apps] size-5"></span>
+          <span class="overlay-minified:hidden">Agentes de IA</span>
+          <span
+            class="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4 overlay-minified:hidden"
+          ></span>
+        </button>
+        <ul
+          class="dropdown-menu mt-0 shadow-none overlay-minified:shadow-md overlay-minified:shadow-base-300/20 dropdown-open:opacity-100 hidden min-w-60 overlay-minified:before:absolute overlay-minified:before:-start-4 overlay-minified:before:top-0 overlay-minified:before:h-full overlay-minified:before:w-4 before:bg-transparent"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="dropdown-default"
+        >
+          <li>
+            <a href="#">
+              <span class="icon-[tabler--mail] size-5"></span>
+              Email
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[tabler--calendar] size-5"></span>
+              Calendar
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li
+        class="dropdown relative [--adaptive:none] [--strategy:static] overlay-minified:[--adaptive:adaptive] overlay-minified:[--strategy:fixed] overlay-minified:[--offset:15] overlay-minified:[--trigger:hover] overlay-minified:[--placement:right-start]"
+      >
+        <button
+          id="dropdown-Four"
+          type="button"
+          class="dropdown-toggle"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-label="Dropdown"
+        >
+          <span class="icon-[tabler--apps] size-5"></span>
+          <span class="overlay-minified:hidden">Proyecto</span>
+          <span
+            class="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4 overlay-minified:hidden"
+          ></span>
+        </button>
+        <ul
+          class="dropdown-menu mt-0 shadow-none overlay-minified:shadow-md overlay-minified:shadow-base-300/20 dropdown-open:opacity-100 hidden min-w-60 overlay-minified:before:absolute overlay-minified:before:-start-4 overlay-minified:before:top-0 overlay-minified:before:h-full overlay-minified:before:w-4 before:bg-transparent"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="dropdown-default"
+        >
+          <li>
+            <a href="#">
+              <span class="icon-[tabler--mail] size-5"></span>
+              Email
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon-[tabler--calendar] size-5"></span>
+              Calendar
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</aside>

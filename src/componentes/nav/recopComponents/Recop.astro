@@ -1,0 +1,33 @@
+<div class="dropdown fixed
+bottom-14
+md:bottom-0
+right-4
+inline-flex">
+  <button
+    id="dropdown-default"
+    type="button"
+    class="dropdown-toggle
+            btn
+            btn-secondary
+            text-sm
+            opacity-40
+            dropdown-open:opacity-100
+            hover:opacity-100
+            transition-opacity
+            duration-300
+            rounded-full"
+    aria-haspopup="menu"
+    aria-expanded="false"
+    aria-label="Dropdown"
+    ><span class="icon-[icon-park-solid--paragraph-round] size-4"></span>
+    <span class="hidden md:block">En esta página</span>
+  </button>
+  <ul
+    class="dropdown-menu dropdown-open:opacity-100 hidden min-w-60"
+    role="menu"
+    aria-orientation="vertical"
+    aria-labelledby="dropdown-default"
+  >
+    <slot />
+  </ul>
+</div>

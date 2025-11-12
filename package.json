@@ -9,6 +9,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.15.4"
+    "@tailwindcss/vite": "^4.1.17",
+    "astro": "^5.15.4",
+    "flyonui": "^2.4.1",
+    "tailwindcss": "^4.1.17",
+    "theme-change": "^2.5.0"
+  },
+  "devDependencies": {
+    "@iconify/json": "^2.2.405",
+    "@iconify/tailwind4": "^1.1.0"
   }
 }

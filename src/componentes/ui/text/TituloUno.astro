@@ -1,0 +1,32 @@
+---
+const titulo = Astro.props.titulo;
+const subtitulo = Astro.props.subtitulo;
+---
+
+<br />
+<div class="border-l-6
+        border-primary/75">
+  <br />
+  <h1
+    class="text-balance
+        text-primary
+        font-bold
+        pl-4
+        <!-- responsive -->
+        text-5xl
+        lg:text-7xl"
+  >
+    {titulo}
+  </h1>
+  <p
+    class="pl-8
+  font-semibold
+  text-balance
+  <!-- responsive -->
+  text-2xl
+  lg:text-4xl"
+  >
+    {subtitulo}
+  </p>
+</div>
+<br /><br />

@@ -1,0 +1,31 @@
+---
+const dropdownTitle = Astro.props.title;
+const dropdownIcon = Astro.props.icon;
+---
+
+<li
+  class="z-50 dropdown relative [--adaptive:none] [--strategy:static] overlay-minified:[--adaptive:adaptive] overlay-minified:[--strategy:fixed] overlay-minified:[--offset:12] overlay-minified:[--trigger:hover] overlay-minified:[--placement:right-start]"
+>
+  <button
+    id="dropdown-default"
+    type="button"
+    class="dropdown-toggle"
+    aria-haspopup="menu"
+    aria-expanded="false"
+    aria-label="Dropdown"
+  >
+    <span class={dropdownIcon}></span>
+    <span class="overlay-minified:hidden">{dropdownTitle}</span>
+    <span
+      class="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4 overlay-minified:hidden"
+    ></span>
+  </button>
+  <ul
+    class="dropdown-menu mt-0 shadow-none overlay-minified:shadow-md overlay-minified:shadow-base-300/20 dropdown-open:opacity-100 hidden min-w-60 overlay-minified:before:absolute overlay-minified:before:-start-4 overlay-minified:before:top-0 overlay-minified:before:h-full overlay-minified:before:w-4 before:bg-transparent"
+    role="menu"
+    aria-orientation="vertical"
+    aria-labelledby="dropdown-default"
+  >
+    <slot />
+  </ul>
+</li>

@@ -1,0 +1,39 @@
+---
+const autor = Astro.props.autor;
+---
+
+<br />
+<blockquote
+  class="relative -z-10
+          py-4
+          <!-- responsive -->
+          px-8
+          lg:px-32"
+>
+  <span
+    class="icon-[tabler--quote]
+          text-base-300/10
+          absolute
+          -start-3
+          -top-3
+          left-1/9
+          transform
+          -translate-x-1/2
+          size-16
+          rotate-180
+          rtl:rotate-0"
+  ></span>
+
+  <div class="relative">
+    <p class="text-lg font-bold text-primary">
+      <em>
+        <slot />
+      </em>
+    </p>
+  </div>
+  <footer class="mt-4">
+    <div class="text-base-content/50 text-base font-semibold">
+      ~ {autor}
+    </div>
+  </footer>
+</blockquote>
