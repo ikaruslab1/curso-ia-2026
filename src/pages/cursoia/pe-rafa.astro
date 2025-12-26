@@ -1,0 +1,368 @@
+---
+/* Text Components */
+import TituloUno from "../../componentes/ui/text/TituloUno.astro";
+import TituloTres from "../../componentes/ui/text/TituloTres.astro";
+import Pgh from "../../componentes/ui/text/Pgh.astro";
+import SigPag from "../../componentes/ui/functional/acordionComponentes/SigPag.astro";
+import Message from "../../componentes/ui/text/Message.astro";
+
+/* Recop Section */
+import Recop from "../../componentes/nav/recopComponents/Recop.astro";
+import RecopLi from "../../componentes/nav/recopComponents/RecopLi.astro";
+
+const RecopOne = "Rol";
+const RecopTwo = "Acción";
+const RecopThree = "Formato";
+const RecopFour = "Audiencia";
+const RecopFive = "Ejemplos";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ContEdit from "../../componentes/ui/functional/clipboards/ContEdit.astro";
+export const title = "Metodología RAFA";
+export const category = "Prompt Engineering";
+---
+
+<BaseLayout title={title}>
+  <!-- Recopilatorio -->
+  <Recop>
+    <RecopLi ID={RecopOne} titulo="Rol" />
+    <RecopLi ID={RecopTwo} titulo="Acción" />
+    <RecopLi ID={RecopThree} titulo="Formato" />
+    <RecopLi ID={RecopFour} titulo="Audiencia" />
+    <RecopLi ID={RecopFive} titulo="Ejemplos" />
+  </Recop>
+  <!-- Recopilatorio -->
+
+  <TituloUno titulo={title} subtitulo="técnica de prompting para contenidos" />
+
+  <Pgh>
+    Imagina por un momento que estás frente a la cabina de un avión
+    extremadamente complejo. Tradicionalmente, para operar este avión,
+    necesitabas conocer cada interruptor, cada cable y cada línea de código. Sin
+    embargo, la Inteligencia Artificial Generativa ha cambiado la interfaz de
+    control. Ahora, en lugar de interruptores manuales, tienes un copiloto
+    experto sentado a tu lado.
+  </Pgh>
+  <Pgh>
+    Técnicamente, un <b>Prompt</b> no es una simple pregunta; es un conjunto de tokens
+    que condicionan la probabilidad de la respuesta del modelo. La Ingeniería de Prompts
+    es el proceso iterativo de diseñar estas entradas (inputs) para guiar al modelo
+    hacia una salida (output) específica, precisa y útil, minimizando las "alucinaciones"
+    (errores factuales) y maximizando la relevancia contextual.
+  </Pgh>
+
+  <TituloTres ID={""}> Rol, Acción, Formato y Audiencia </TituloTres>
+
+  <Pgh>
+    En el ecosistema profesional actual, la capacidad de redactar prompts
+    efectivos es equivalente a saber usar una hoja de cálculo en los años 90. Es
+    una competencia transversal. Un estudiante que domina la estructura lógica
+    de un prompt no solo obtiene mejores respuestas, sino que <b
+      >aprende a descomponer problemas complejos</b
+    >, una habilidad crítica de pensamiento computacional.
+  </Pgh>
+
+  <Pgh>
+    Para dominar la creación de prompts, necesitamos un marco mental
+    estructurado. En este curso utilizaremos la metodología <span
+      class="font-bold text-primary">RAFA</span
+    >. Este acrónimo representa los cuatro pilares fundamentales que todo prompt
+    profesional debe contener para reducir la ambigüedad y activar las áreas
+    correctas del conocimiento latente de la IA.
+  </Pgh>
+
+  <Pgh>
+    La metodología se desglosa en: <b
+      >Rol, Acción, Formato y Audiencia (o Contexto).</b
+    >
+  </Pgh>
+
+  <TituloTres ID={RecopOne}> <b>R</b> - ROL (Role Priming) </TituloTres>
+
+  <Message> ¿Quién habla? </Message>
+
+  <Pgh>
+    Los LLMs contienen cantidades masivas de información, desde recetas de
+    cocina hasta física cuántica. Si no le das una dirección, el modelo
+    responderá con el "promedio" de todo ese conocimiento (a menudo vago y
+    genérico). Asignar un rol es como decirle al bibliotecario en qué sección de
+    la biblioteca debe buscar.
+  </Pgh>
+
+  <Pgh>
+    <ul class="list-disc pl-16 text-lg">
+      <li>
+        <b>Técnica:</b> Utiliza la frase "Actúa como un [Experto en X]".
+      </li>
+      <li>
+        <b>Profundización:</b> Al definir una <em>persona</em>, activas clusters
+        semánticos específicos dentro del modelo, predisponiendo el vocabulario,
+        el tono y el marco teórico que utilizará.
+
+        <br />
+        <br />
+        <p class="text-center">
+          <b>Ejemplo:</b> No es lo mismo pedir "Explica la fotosíntesis" que "Actúa
+          como un <u>botánico experto en divulgación científica</u> y explica la fotosíntesis".
+        </p>
+      </li>
+    </ul>
+  </Pgh>
+
+  <TituloTres ID={RecopTwo}>
+    <b>A</b> - ACCIÓN (La Tarea Específica)
+  </TituloTres>
+
+  <Message> ¿Qué debe hacer exactamente? </Message>
+
+  <Pgh>
+    Es el verbo principal. La precisión gramatical aquí es vital. Para ilustrar
+    la diferencia de impacto, observa la siguiente clasificación:
+  </Pgh>
+
+  <div class="w-full overflow-x-auto py-4">
+    <table class="table text-xl">
+      <thead>
+        <tr>
+          <th>Categoría de Tarea</th>
+          <th>Verbos Débiles (Resultados Vagos)</th>
+          <th>Verbos Fuertes (Acciones Concretas)</th>
+        </tr>
+      </thead>
+      <tbody class="text-lg">
+        <tr>
+          <td>Cognitiva</td>
+          <td> Piensa, revisa, mira</td>
+          <td>Analiza, evalúa, audita, diagnostica</td>
+        </tr>
+        <tr>
+          <td>Creativa</td>
+          <td>Haz, escribe, inventa</td>
+          <td> Redacta, diseña, itera, compón</td>
+        </tr>
+        <tr>
+          <td>Organizativa</td>
+          <td>Ordena, pon, di</td>
+          <td>Clasifica, jerarquiza, resume, esquematiza</td>
+        </tr>
+        <tr>
+          <td>Técnica</td>
+          <td>Usa, cambia, mejora</td>
+          <td>Implementa, refactoriza, optimiza, transforma</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <Pgh>
+    El uso de verbos fuertes elimina la ambigüedad y fuerza al modelo a ejecutar
+    procesos lógicos específicos.
+  </Pgh>
+  <Pgh>
+    <ul class="list-disc pl-16 text-lg">
+      <li>
+        <b>Técnica:</b> Utiliza verbos de acción directa e incluye el tema central.
+      </li>
+      <li>
+        <b>Profundización:</b> Si la tarea es compleja, utiliza la técnica <em
+          >Chain of Thought</em
+        >, pidiendo al modelo que "piense paso a paso" antes de dar la solución
+        final.
+
+        <br />
+        <br />
+        <p class="text-center">
+          <b>Ejemplo:</b> "<u>Analiza</u> el siguiente texto financiero e identifica
+          tres riesgos de mercado".
+        </p>
+      </li>
+    </ul>
+  </Pgh>
+
+  <TituloTres ID={RecopThree}>
+    <b>F</b> - FORMATO (Output Constraint)
+  </TituloTres>
+
+  <Message> ¿Cómo quiero la entrega? </Message>
+
+  <Pgh>
+    El modelo no puede ver tu mente. Si necesitas una tabla y no la pides, te
+    dará párrafos de texto. Definir el formato es la diferencia entre pasar 30
+    minutos editando la respuesta o usarla inmediatamente.
+  </Pgh>
+
+  <Pgh>
+    <ul class="list-disc pl-16 text-lg">
+      <li>
+        <b>Técnica:</b> Especifica explícitamente la estructura visual o lógica.
+      </li>
+      <li>
+        Ahora mira esta tabla con los formatos de salida más comunes que puedes
+        solicitar a modelos como Gemini:
+
+        <div class="w-full overflow-x-auto py-4">
+          <table class="table text-xl">
+            <thead>
+              <tr>
+                <th>Tipo de Formato</th>
+                <th>Ejemplo de Prompt (Instrucción explícita)</th>
+                <th>Caso de Uso Ideal</th>
+              </tr>
+            </thead>
+            <tbody class="text-lg">
+              <tr>
+                <td>Tabular</td>
+                <td
+                  >"Preséntalo en una tabla con las columnas [Concepto,
+                  Definición, Ejemplo]"</td
+                >
+                <td>Comparaciones, resúmenes de datos estructurados.</td>
+              </tr>
+              <tr>
+                <td>Código</td>
+                <td
+                  >"Genera el script en un bloque de código Python comentado"</td
+                >
+                <td>Desarrollo de software, scripts de automatización, SQL.</td>
+              </tr>
+              <tr>
+                <td>Lista / Esquema</td>
+                <td> "Crea una lista numerada jerárquica (bullet points)"</td>
+                <td>Pasos a seguir, lluvias de ideas, resúmenes ejecutivos.</td>
+              </tr>
+              <tr>
+                <td>Texto Estructurado</td>
+                <td>"Escribe un ensayo de 300 palabras con subtítulos H2"</td>
+                <td
+                  >Artículos de blog, informes, correos electrónicos formales.</td
+                >
+              </tr>
+              <tr>
+                <td>Formatos de Datos</td>
+                <td>"Entrégame la respuesta en formato JSON o CSV válido"</td>
+                <td
+                  >Integración con bases de datos o APIs, exportación de datos.</td
+                >
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </li>
+    </ul>
+  </Pgh>
+
+  <TituloTres ID={RecopFour}>
+    <b>A</b> - AUDIENCIA (o Ajuste de Contexto)
+  </TituloTres>
+
+  <Message> ¿Para quién es esto? </Message>
+
+  <Pgh>
+    El nivel de complejidad de la respuesta debe ajustarse al receptor final.
+    Este paso ajusta la "temperatura" semántica del mensaje, simplificando jerga
+    técnica o elevando el discurso académico según sea necesario.
+  </Pgh>
+
+  <Pgh>
+    <ul class="list-disc pl-16 text-lg">
+      <li>
+        <b>Técnica:</b> Describe quién leerá el resultado.
+      </li>
+      <li>
+        <b>Impacto:</b> Cambia radicalmente la selección de palabras y la profundidad
+        de la explicación.
+        <br />
+        <br />
+        <p class="text-center">
+          <b>Ejemplo:</b> "...explícalo para un niño de 5 años" vs "...explícalo para
+          un comité de doctorado".
+        </p>
+      </li>
+    </ul>
+  </Pgh>
+
+  <TituloTres ID={RecopFive}>
+    Ejemplos reales de la metodología RAFA
+  </TituloTres>
+
+  <div class="divider divider-dotted">Desarrollo de Software</div>
+  <div class="divider"></div>
+
+  <ContEdit
+    id="1"
+    copied="Actúa como un Ingeniero de Software Senior. Tu tarea es documentar la siguiente función de JavaScript explicando su lógica y posibles casos de borde. Entrégame el resultado en formato Markdown, incluyendo comentarios dentro del código. La audiencia son desarrolladores Junior que acaban de unirse al equipo."
+    >Actúa como un Ingeniero de Software Senior
+    <span class="font-bold text-success"> (Rol)</span>. Tu tarea es documentar
+    la siguiente función de JavaScript explicando su lógica y posibles casos de
+    borde<span class="font-bold text-error"> (Acción)</span>. Entrégame el
+    resultado en formato Markdown, incluyendo comentarios dentro del código<span
+      class="font-bold text-info"
+    >
+      (Formato)</span
+    >. La audiencia son desarrolladores Junior que acaban de unirse al equipo<span
+      class="font-bold text-warning"
+    >
+      (Audiencia)</span
+    >. <br /><br />
+    <p class="font-mono">[Insertar código aquí]</p></ContEdit
+  >
+  <br />
+  <div class="divider divider-dotted">Marketing Digital</div>
+  <div class="divider"></div>
+
+  <ContEdit
+    id="2"
+    copied="Eres un Experto en Copywriting y SEO. Necesito que generes 5 ideas de títulos para un artículo de blog sobre 'Zapatillas de correr sostenibles'. El formato debe ser una lista con viñetas, indicando al lado de cada título la palabra clave principal atacada. Los títulos deben estar dirigidos a corredores amateurs preocupados por el medio ambiente."
+    >Eres un Experto en Copywriting y SEO <span class="font-bold text-success">
+      (Rol)</span
+    >. Necesito que generes 5 ideas de títulos para un artículo de blog sobre
+    'Zapatillas de correr sostenibles'
+    <span class="font-bold text-error"> (Acción)</span>. El formato debe ser una
+    lista con viñetas, indicando al lado de cada título la palabra clave
+    principal atacada <span class="font-bold text-info"> (Formato)</span>. Los
+    títulos deben estar dirigidos a corredores amateurs preocupados por el medio
+    ambiente <span class="font-bold text-warning"> (Audiencia)</span>.
+  </ContEdit>
+
+  <br />
+  <div class="divider divider-dotted">Educación</div>
+  <div class="divider"></div>
+
+  <ContEdit
+    id="3"
+    copied="Actúa como un Pedagogo especializado en Historia. Diseña un esquema de clase de 45 minutos sobre la Revolución Industrial. El formato debe ser una tabla con las columnas: Tiempo, Actividad, Recurso Didáctico y Objetivo de Aprendizaje. La clase es para estudiantes de secundaria que se aburren fácilmente con las clases magistrales tradicionales."
+    >Actúa como un Pedagogo especializado en Historia <span
+      class="font-bold text-success"
+    >
+      (Rol)</span
+    >. Diseña un esquema de clase de 45 minutos sobre la Revolución Industrial <span
+      class="font-bold text-error"
+    >
+      (Acción)</span
+    >. El formato debe ser una tabla con las columnas: Tiempo, Actividad,
+    Recurso Didáctico y Objetivo de Aprendizaje <span
+      class="font-bold text-info"
+    >
+      (Formato)</span
+    >. La clase es para estudiantes de secundaria que se aburren fácilmente con
+    las clases magistrales tradicionales <span class="font-bold text-warning">
+      (Audiencia)</span
+    >.
+  </ContEdit>
+  <br />
+
+  <Pgh>
+    La metodología RAFA no es una regla rígida, sino un andamiaje cognitivo. Al
+    interiorizar Rol, Acción, Formato y Audiencia, dejarás de luchar contra la
+    Inteligencia Artificial y comenzarás a orquestarla. Recuerda: la calidad de
+    la respuesta de la IA nunca <u><b>superará la calidad de tu pregunta</b></u
+    >.
+  </Pgh>
+
+  <SigPag
+    url="./pe-relc"
+    titulo="Metodología RELC"
+    tipo="ambos"
+    urlAnterior="./pe-intro"
+  />
+</BaseLayout>

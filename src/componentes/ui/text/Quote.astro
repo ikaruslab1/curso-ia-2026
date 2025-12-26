@@ -33,7 +33,7 @@ const autor = Astro.props.autor;
   </div>
   <footer class="mt-4">
     <div class="text-base-content/50 text-base font-semibold">
-      ~ {autor}
+      {autor ? `~ ${autor}` : ""}
     </div>
   </footer>
 </blockquote>

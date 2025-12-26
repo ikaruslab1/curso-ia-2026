@@ -1,0 +1,44 @@
+---
+/* Text Components */
+import TituloUno from "../../componentes/ui/text/TituloUno.astro";
+import TituloTres from "../../componentes/ui/text/TituloTres.astro";
+import Pgh from "../../componentes/ui/text/Pgh.astro";
+import Quote from "../../componentes/ui/text/Quote.astro";
+import SigPag from "../../componentes/ui/functional/acordionComponentes/SigPag.astro";
+import Message from "../../componentes/ui/text/Message.astro";
+
+/* Functional Components */
+import Accordion from "../../componentes/ui/functional/acordionComponentes/Accordion.astro";
+import ATab from "../../componentes/ui/functional/acordionComponentes/ATab.astro";
+
+/* Recop Section */
+import Recop from "../../componentes/nav/recopComponents/Recop.astro";
+import RecopLi from "../../componentes/nav/recopComponents/RecopLi.astro";
+
+const RecopOne = "Rol";
+const RecopTwo = "Acción";
+const RecopThree = "Formato";
+const RecopFour = "Audiencia";
+const RecopFive = "Ejemplos";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ContEdit from "../../componentes/ui/functional/clipboards/ContEdit.astro";
+export const title = "Metodología RELC";
+export const category = "Prompt Engineering";
+---
+
+<BaseLayout title={title}>
+  <!-- Recopilatorio -->
+  <Recop>
+    <RecopLi ID={RecopOne} titulo="Rol" />
+    <RecopLi ID={RecopTwo} titulo="Acción" />
+    <RecopLi ID={RecopThree} titulo="Formato" />
+    <RecopLi ID={RecopFour} titulo="Audiencia" />
+    <RecopLi ID={RecopFive} titulo="Ejemplos" />
+  </Recop>
+  <!-- Recopilatorio -->
+
+  <TituloUno titulo={title} subtitulo="técnica de prompting para contenidos" />
+
+  <SigPag url="#" titulo="Rafa" tipo="ambos" urlAnterior="./pe-rafa" />
+</BaseLayout>

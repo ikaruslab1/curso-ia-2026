@@ -1,0 +1,155 @@
+---
+interface Props {
+  src: string;
+  title?: string;
+}
+
+const { src, title = "Audio" } = Astro.props;
+---
+
+<div
+  class="bg-base-200 rounded-xl p-4 shadow-md w-full max-w-md mx-auto flex items-center gap-4 audio-player-component"
+>
+  <!-- Play/Pause Button -->
+  <button class="btn btn-circle btn-primary play-btn" aria-label="Play">
+    <span class="icon-[tabler--player-play-filled] size-6 play-icon"></span>
+    <span class="icon-[tabler--player-pause-filled] size-6 pause-icon hidden"
+    ></span>
+  </button>
+
+  <div class="flex-1 min-w-0">
+    <!-- Title -->
+    <h3 class="text-sm font-bold truncate mb-1">{title}</h3>
+
+    <!-- Progress Bar -->
+    <div
+      class="relative w-full h-2 bg-base-300 rounded-full cursor-pointer progress-container group"
+    >
+      <div
+        class="absolute top-0 left-0 h-full bg-primary rounded-full progress-bar w-0 group-hover:bg-primary-focus transition-colors"
+      >
+      </div>
+      <div
+        class="absolute top-1/2 -translate-y-1/2 left-0 size-3 bg-white rounded-full shadow-sm opacity-0 group-hover:opacity-100 transition-opacity thumb"
+        style="left: 0%"
+      >
+      </div>
+    </div>
+
+    <!-- Time Info -->
+    <div
+      class="flex justify-between text-xs text-base-content/60 mt-1 font-mono"
+    >
+      <span class="current-time">0:00</span>
+      <span class="duration">0:00</span>
+    </div>
+  </div>
+
+  <!-- Audio Element -->
+  <audio src={src} preload="metadata"></audio>
+</div>
+
+<script>
+  class AudioPlayer {
+    container: HTMLElement;
+    audio: HTMLAudioElement;
+    playBtn: HTMLButtonElement;
+    playIcon: HTMLElement;
+    pauseIcon: HTMLElement;
+    progressContainer: HTMLElement;
+    progressBar: HTMLElement;
+    thumb: HTMLElement;
+    currentTimeEl: HTMLElement;
+    durationEl: HTMLElement;
+    isPlaying: boolean = false;
+
+    constructor(container: HTMLElement) {
+      this.container = container;
+      this.audio = container.querySelector("audio")!;
+      this.playBtn = container.querySelector(".play-btn")!;
+      this.playIcon = container.querySelector(".play-icon")!;
+      this.pauseIcon = container.querySelector(".pause-icon")!;
+      this.progressContainer = container.querySelector(".progress-container")!;
+      this.progressBar = container.querySelector(".progress-bar")!;
+      this.thumb = container.querySelector(".thumb")!;
+      this.currentTimeEl = container.querySelector(".current-time")!;
+      this.durationEl = container.querySelector(".duration")!;
+
+      this.init();
+    }
+
+    init() {
+      // Play/Pause
+      this.playBtn.addEventListener("click", () => this.togglePlay());
+
+      // Update Progress
+      this.audio.addEventListener("timeupdate", () => this.updateProgress());
+
+      // Loaded Metadata (Duration)
+      this.audio.addEventListener("loadedmetadata", () => {
+        this.durationEl.textContent = this.formatTime(this.audio.duration);
+      });
+
+      // Seek
+      this.progressContainer.addEventListener("click", (e) => this.seek(e));
+
+      // End
+      this.audio.addEventListener("ended", () => {
+        this.isPlaying = false;
+        this.updatePlayIcon();
+        this.audio.currentTime = 0;
+        this.updateProgress();
+      });
+    }
+
+    togglePlay() {
+      if (this.isPlaying) {
+        this.audio.pause();
+      } else {
+        this.audio.play();
+      }
+      this.isPlaying = !this.isPlaying;
+      this.updatePlayIcon();
+    }
+
+    updatePlayIcon() {
+      if (this.isPlaying) {
+        this.playIcon.classList.add("hidden");
+        this.pauseIcon.classList.remove("hidden");
+      } else {
+        this.playIcon.classList.remove("hidden");
+        this.pauseIcon.classList.add("hidden");
+      }
+    }
+
+    updateProgress() {
+      const { currentTime, duration } = this.audio;
+      if (isNaN(duration)) return;
+      const percent = (currentTime / duration) * 100;
+      this.progressBar.style.width = `${percent}%`;
+      this.thumb.style.left = `${percent}%`;
+      this.currentTimeEl.textContent = this.formatTime(currentTime);
+    }
+
+    seek(e: MouseEvent) {
+      const width = this.progressContainer.clientWidth;
+      const clickX = e.offsetX;
+      const duration = this.audio.duration;
+      if (!isNaN(duration)) {
+        this.audio.currentTime = (clickX / width) * duration;
+      }
+    }
+
+    formatTime(seconds: number): string {
+      if (isNaN(seconds)) return "0:00";
+      const min = Math.floor(seconds / 60);
+      const sec = Math.floor(seconds % 60);
+      return `${min}:${sec < 10 ? "0" : ""}${sec}`;
+    }
+  }
+
+  // Initialize all players on the page
+  document.querySelectorAll(".audio-player-component").forEach((el) => {
+    new AudioPlayer(el as HTMLElement);
+  });
+</script>

@@ -6,6 +6,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import TituloUno from "../../componentes/ui/text/TituloUno.astro";
 import TituloTres from "../../componentes/ui/text/TituloTres.astro";
 import Pgh from "../../componentes/ui/text/Pgh.astro";
+import Enphasis from "../../componentes/ui/text/Enphasis.astro";
 
 import Message from "../../componentes/ui/text/Message.astro";
 import Quote from "../../componentes/ui/text/Quote.astro";
@@ -23,17 +24,16 @@ const RecopOne = "que-es-ia";
 const RecopTwo = "para-que-sirve";
 
 /* Const */
-const title = "Definición Universal";
+export const title = "Definición Universal";
+export const category = "Conceptos Básicos";
 ---
 
 <BaseLayout title={title}>
   <!-- Recopilatorio -->
-
   <Recop>
     <RecopLi ID={RecopOne} titulo="¿Qué es la inteligencia artificial?" />
     <RecopLi ID={RecopTwo} titulo="¿Qué es la inteligencia artificial?" />
   </Recop>
-
   <!-- Recopilatorio -->
 
   <TituloUno titulo={title} subtitulo="Introducción para entender a la IA" />
@@ -59,10 +59,10 @@ const title = "Definición Universal";
     >Claro, es importante hablar sobre la definición misma del concepto, pero en
     este caso la respuesta no es clara, no existe un consenso académico ni
     global sobre una definición única sobre inteligencia artificial, la
-    respuesta que un profesional en este campo te daría sería: <span
-      class="text-primary font-bold underline">depende</span
-    >. Por su puesto, existe una definición inicial propuesta por John McCarthy
-    quien acuñó el término inteligencia artificial en 1956:
+    respuesta que un profesional en este campo te daría sería: <Enphasis
+      >depende.</Enphasis
+    > Por su puesto, existe una definición inicial propuesta por John McCarthy quien
+    acuñó el término inteligencia artificial en 1956:
   </Pgh>
 
   <Quote autor="John McCarthy"
@@ -74,11 +74,9 @@ const title = "Definición Universal";
     >No cabe duda que, aunque ilustrativa, esta definición es bastante más
     histórica que acertada para la gran cantidad de aplicaciones que actualmente
     le damos en todos los rubros imaginables a esta tecnología, pero entonces
-    ¿de qué depende su definición? del <span class="text-primary font-bold"
-      >contexto</span
-    > en el que se haga está pregunta, claro. Sí hablamos de un entorno cotidiano
-    la definición más cercana a un consenso sobre qué es la inteligencia artificial
-    podría ser la siguiente:</Pgh
+    ¿de qué depende su definición? del <Enphasis>contexto</Enphasis> en el que se
+    haga está pregunta, claro. Sí hablamos de un entorno cotidiano la definición más
+    cercana a un consenso sobre qué es la inteligencia artificial podría ser la siguiente:</Pgh
   >
 
   <Message>
@@ -135,10 +133,10 @@ const title = "Definición Universal";
   </Accordion>
 
   <Pgh
-    >En resumidas cuentas, la inteligencia artificial es un nuevo <span
-      class="text-primary font-bold">paradigma de la historia reciente</span
-    > que ha llegado a todas las actividades humanas y está incorporada en mayor
-    o menor medida en la mayoría de sistemas informáticos que usamos cotidianamente,
+    >En resumidas cuentas, la inteligencia artificial es un nuevo <Enphasis
+      >paradigma de la historia reciente</Enphasis
+    > que ha llegado a todas las actividades humanas y está incorporada en mayor o
+    menor medida en la mayoría de sistemas informáticos que usamos cotidianamente,
     su diversidad de aplicaciones y lo abstracto de su funcionamiento es lo que nos
     hace difícil su definición, pero lo cierto es que es una tecnología que llegó
     para quedarse, y como educadores adaptarnos para adquirir nuevas formas de impartir

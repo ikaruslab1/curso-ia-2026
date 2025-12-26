@@ -1,0 +1,56 @@
+---
+interface Props {
+  url: string;
+  urlAnterior: string;
+  titulo: string;
+  tipo?: "sig" | "ant" | "ambos";
+}
+
+const { url, titulo, urlAnterior, tipo } = Astro.props;
+---
+
+{
+  tipo === "ambos" && (
+    <div class="w-full flex justify-between mt-10 mb-5">
+      <a
+        href={urlAnterior}
+        class="flex items-center gap-2 bg-primary text-bg-primary hover:bg-primary/50 transition-colors duration-300 px-4 py-2 rounded-lg transition-colors font-semibold shadow-md"
+      >
+        <span class="icon-[tabler--arrow-left] size-5" />
+        Anterior
+      </a>
+      <a
+        href={url}
+        class="flex items-center gap-2 bg-primary text-bg-primary hover:bg-primary/50 transition-colors duration-300 px-4 py-2 rounded-lg transition-colors font-semibold shadow-md"
+      >
+        Siguiente: {titulo}
+        <span class="icon-[tabler--arrow-right] size-5" />
+      </a>
+    </div>
+  )
+}
+{
+  tipo === "sig" && (
+    <div class="w-full flex justify-end mt-10 mb-5">
+      <a
+        href={url}
+        class="flex items-center gap-2 bg-primary text-bg-primary hover:bg-primary/50 transition-colors duration-300 px-4 py-2 rounded-lg transition-colors font-semibold shadow-md"
+      >
+        Siguiente: {titulo}
+        <span class="icon-[tabler--arrow-right] size-5" />
+      </a>
+    </div>
+  )
+}
+{
+  tipo === "ant" && (
+    <div class="w-full flex justify-start mt-10 mb-5">
+      <a
+        href={urlAnterior}
+        class="flex items-center gap-2 bg-primary text-bg-primary hover:bg-primary/50 transition-colors duration-300 px-4 py-2 rounded-lg transition-colors font-semibold shadow-md"
+      >
+        Anterior
+      </a>
+    </div>
+  )
+}

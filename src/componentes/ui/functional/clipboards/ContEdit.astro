@@ -1,0 +1,32 @@
+---
+const copied = Astro.props.copied;
+const id = Astro.props.id;
+---
+
+<input type="hidden" id={`clipboard-tooltip-centered-${id}`} value={copied} />
+
+<button
+  type="button"
+  class="js-clipboard tooltip rounded-box relative flex min-w-60 items-center justify-between gap-x-4 px-4 py-3 shadow-base-300/20 shadow-sm"
+  data-clipboard-target={`#clipboard-tooltip-centered-${id}`}
+  data-clipboard-action="copy"
+  data-clipboard-success-text="Copiado en el portapapeles!"
+>
+  <code>
+    <slot />
+  </code>
+  <span class="flex items-center justify-center">
+    <span
+      class="js-clipboard-default icon-[tabler--clipboard] size-6 transition"
+    ></span>
+    <span
+      class="js-clipboard-success icon-[tabler--clipboard-check] text-primary hidden size-6"
+    ></span>
+  </span>
+  <span
+    class="tooltip-content tooltip-shown:opacity-100 tooltip-shown:visible"
+    role="tooltip"
+  >
+    <span class="tooltip-body js-clipboard-success-text">Copiar</span>
+  </span>
+</button>

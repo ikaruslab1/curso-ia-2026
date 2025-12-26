@@ -2,6 +2,28 @@
 import ThemeChengeller from "./components/ThemeChengeller.astro";
 import DropdownMenu from "./components/DropdownMenu.astro";
 import DropdownMenuNoOverlay from "./components/DropdownMenuNoOverlay.astro";
+
+const pages = await Astro.glob("../../pages/cursoia/*.astro");
+
+interface PageData {
+  title: string;
+  category?: string;
+  url: string;
+}
+
+const groupedPages = pages.reduce((acc: Record<string, PageData[]>, page) => {
+  const p = page as unknown as PageData;
+  const category = p.category || "Otros";
+  if (!acc[category]) acc[category] = [];
+  acc[category].push(p);
+  return acc;
+}, {});
+
+const categoriesOrder = [
+  "Conceptos Básicos",
+  "Modelos de IA",
+  "Prompt Engineering",
+];
 ---
 
 <!--  -->
@@ -135,238 +157,60 @@ import DropdownMenuNoOverlay from "./components/DropdownMenuNoOverlay.astro";
         title="Introducción"
         icon="icon-[ic--baseline-emoji-flags] size-5"
       >
-        <DropdownMenuNoOverlay
-          title="Conceptos Básicos"
-          icon="icon-[la--book] size-5"
-        >
-          <li>
-            <a href="../defUniversal">
-              <span class="icon-[la--arrow-right]"></span>
-              Definición universal
-            </a>
-          </li>
-          <li>
-            <a href="../tiposdeingeligencia">
-              <span class="icon-[la--arrow-right]"></span>
-              Tipos de inteligencias
-            </a>
-          </li>
-          <li>
-            <a href="../piensa">
-              <span class="icon-[la--arrow-right]"></span>
-              ¿La inteligencia artificial es piensa?
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[la--arrow-right]"></span>
-              Alcances de esta tecnología en la vida diaria
-            </a>
-          </li>
-        </DropdownMenuNoOverlay>
-        <DropdownMenuNoOverlay
-          title="Modelos de IA"
-          icon="icon-[ic--baseline-emoji-flags] size-5"
-        >
-          <li>
-            <a href="funcionamiento">
-              <span class="icon-[la--arrow-right]"></span>
-              Funcionamiento
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[la--arrow-right]"></span>
-              Modelos generativos
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[la--arrow-right]"></span>
-              Modelos discriminatorios
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[la--arrow-right]"></span>
-              Arquitectura <em>Transformer</em>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[la--arrow-right]"></span>
-              <em>Attention Mechanism</em>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[la--arrow-right]"></span>
-              <em>Embeddings</em>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[la--arrow-right]"></span>
-              Sistema de vectores
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[la--arrow-right]"></span>
-              Sistema de coordenadas
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[la--arrow-right]"></span>
-              Corpus de datos
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[la--arrow-right]"></span>
-              Entrenamiento
-            </a>
-          </li>
-        </DropdownMenuNoOverlay>
-        <DropdownMenuNoOverlay
-          title="Consideraciones"
-          icon="icon-[ic--baseline-emoji-flags] size-5"
-        >
-          <li>
-            <a href="#">
-              <span class="icon-[la--arrow-right]"></span>
-              Alucinaciones
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[la--arrow-right]"></span>
-              Marco legal
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[la--arrow-right]"></span>
-              Ética
-            </a>
-          </li>
-        </DropdownMenuNoOverlay>
+        {
+          ["Conceptos Básicos", "Modelos de IA"].map((category) => {
+            const categoryPages = groupedPages[category];
+            if (!categoryPages || categoryPages.length === 0) return null;
+
+            return (
+              <DropdownMenuNoOverlay
+                title={category}
+                icon="icon-[la--book] size-5"
+              >
+                {categoryPages.map((page) => (
+                  <li>
+                    <a href={page.url}>
+                      <span class="icon-[la--arrow-right]" />
+                      {page.title}
+                    </a>
+                  </li>
+                ))}
+              </DropdownMenuNoOverlay>
+            );
+          })
+        }
       </DropdownMenu>
 
-      <!-- Prompt E -->
+      <!-- Prompt Engineering -->
 
-      <li
-        class="dropdown relative [--adaptive:none] [--strategy:static] overlay-minified:[--adaptive:adaptive] overlay-minified:[--strategy:fixed] overlay-minified:[--offset:15] overlay-minified:[--trigger:hover] overlay-minified:[--placement:right-start]"
+      <DropdownMenu
+        title="AI profesional"
+        icon="icon-[fluent--prompt-16-filled] size-5"
       >
-        <button
-          id="dropdown-Two"
-          type="button"
-          class="dropdown-toggle"
-          aria-haspopup="menu"
-          aria-expanded="false"
-          aria-label="Dropdown"
-        >
-          <span class="icon-[tabler--apps] size-5"></span>
-          <span class="overlay-minified:hidden">Prompt Engineering</span>
-          <span
-            class="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4 overlay-minified:hidden"
-          ></span>
-        </button>
-        <ul
-          class="dropdown-menu mt-0 shadow-none overlay-minified:shadow-md overlay-minified:shadow-base-300/20 dropdown-open:opacity-100 hidden min-w-60 overlay-minified:before:absolute overlay-minified:before:-start-4 overlay-minified:before:top-0 overlay-minified:before:h-full overlay-minified:before:w-4 before:bg-transparent"
-          role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="dropdown-default"
-        >
-          <li>
-            <a href="#">
-              <span class="icon-[tabler--mail] size-5"></span>
-              Email
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[tabler--calendar] size-5"></span>
-              Calendar
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li
-        class="dropdown relative [--adaptive:none] [--strategy:static] overlay-minified:[--adaptive:adaptive] overlay-minified:[--strategy:fixed] overlay-minified:[--offset:15] overlay-minified:[--trigger:hover] overlay-minified:[--placement:right-start]"
-      >
-        <button
-          id="dropdown-Three"
-          type="button"
-          class="dropdown-toggle"
-          aria-haspopup="menu"
-          aria-expanded="false"
-          aria-label="Dropdown"
-        >
-          <span class="icon-[tabler--apps] size-5"></span>
-          <span class="overlay-minified:hidden">Agentes de IA</span>
-          <span
-            class="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4 overlay-minified:hidden"
-          ></span>
-        </button>
-        <ul
-          class="dropdown-menu mt-0 shadow-none overlay-minified:shadow-md overlay-minified:shadow-base-300/20 dropdown-open:opacity-100 hidden min-w-60 overlay-minified:before:absolute overlay-minified:before:-start-4 overlay-minified:before:top-0 overlay-minified:before:h-full overlay-minified:before:w-4 before:bg-transparent"
-          role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="dropdown-default"
-        >
-          <li>
-            <a href="#">
-              <span class="icon-[tabler--mail] size-5"></span>
-              Email
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[tabler--calendar] size-5"></span>
-              Calendar
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li
-        class="dropdown relative [--adaptive:none] [--strategy:static] overlay-minified:[--adaptive:adaptive] overlay-minified:[--strategy:fixed] overlay-minified:[--offset:15] overlay-minified:[--trigger:hover] overlay-minified:[--placement:right-start]"
-      >
-        <button
-          id="dropdown-Four"
-          type="button"
-          class="dropdown-toggle"
-          aria-haspopup="menu"
-          aria-expanded="false"
-          aria-label="Dropdown"
-        >
-          <span class="icon-[tabler--apps] size-5"></span>
-          <span class="overlay-minified:hidden">Proyecto</span>
-          <span
-            class="icon-[tabler--chevron-down] dropdown-open:rotate-180 size-4 overlay-minified:hidden"
-          ></span>
-        </button>
-        <ul
-          class="dropdown-menu mt-0 shadow-none overlay-minified:shadow-md overlay-minified:shadow-base-300/20 dropdown-open:opacity-100 hidden min-w-60 overlay-minified:before:absolute overlay-minified:before:-start-4 overlay-minified:before:top-0 overlay-minified:before:h-full overlay-minified:before:w-4 before:bg-transparent"
-          role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="dropdown-default"
-        >
-          <li>
-            <a href="#">
-              <span class="icon-[tabler--mail] size-5"></span>
-              Email
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="icon-[tabler--calendar] size-5"></span>
-              Calendar
-            </a>
-          </li>
-        </ul>
-      </li>
+        {
+          ["Prompt Engineering"].map((category) => {
+            const categoryPages = groupedPages[category];
+            if (!categoryPages || categoryPages.length === 0) return null;
+
+            return (
+              <DropdownMenuNoOverlay
+                title={category}
+                icon="icon-[la--book] size-5"
+              >
+                {categoryPages.map((page) => (
+                  <li>
+                    <a href={page.url}>
+                      <span class="icon-[la--arrow-right]" />
+                      {page.title}
+                    </a>
+                  </li>
+                ))}
+              </DropdownMenuNoOverlay>
+            );
+          })
+        }
+      </DropdownMenu>
+      <!-- Prompt E -->
     </ul>
   </div>
 </aside>

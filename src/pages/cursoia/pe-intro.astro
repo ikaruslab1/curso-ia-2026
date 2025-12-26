@@ -1,0 +1,196 @@
+---
+/* Text Components */
+import TituloUno from "../../componentes/ui/text/TituloUno.astro";
+import TituloTres from "../../componentes/ui/text/TituloTres.astro";
+import Pgh from "../../componentes/ui/text/Pgh.astro";
+import Quote from "../../componentes/ui/text/Quote.astro";
+import SigPag from "../../componentes/ui/functional/acordionComponentes/SigPag.astro";
+
+/* Functional Components */
+import Accordion from "../../componentes/ui/functional/acordionComponentes/Accordion.astro";
+import ATab from "../../componentes/ui/functional/acordionComponentes/ATab.astro";
+
+/* Recop Section */
+import Recop from "../../componentes/nav/recopComponents/Recop.astro";
+import RecopLi from "../../componentes/nav/recopComponents/RecopLi.astro";
+
+const RecopOne = "framework";
+const RecopTwo = "tecnica";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AudioPlayer from "../../componentes/ui/functional/media/AudioPlayer.astro";
+export const title = "Introducción";
+export const category = "Prompt Engineering";
+---
+
+<BaseLayout title={title}>
+  <!-- Recopilatorio -->
+  <Recop>
+    <RecopLi ID={RecopOne} titulo="El Framework de un Prompt Perfecto" />
+    <RecopLi ID={RecopTwo} titulo="Técnicas y Estrategias" />
+  </Recop>
+  <!-- Recopilatorio -->
+
+  <TituloUno
+    titulo={title}
+    subtitulo="Fundamentos y Aplicación de la Ingeniería de Prompts"
+  />
+  <Pgh>
+    A menudo se confunde el <em>Prompt Engineering</em> con simplemente "chatear"
+    con una IA. Para entenderlo con rigor técnico, usemos una analogía:
+  </Pgh>
+
+  <Quote
+    >El Arquitecto y el Constructor:
+    <span class="text-slate-600 font-medium"
+      >Imagina que el Modelo de Lenguaje es un constructor increíblemente hábil
+      y fuerte, pero que carece de iniciativa propia. Si tú (el arquitecto) le
+      dices simplemente "construye una casa", el constructor podría hacer una
+      cabaña de madera, un rascacielos o una casa de muñecas. El Prompt
+      Engineering no es pedir la casa; es entregar los planos, especificar los
+      materiales, definir las dimensiones y aclarar las normas de seguridad.</span
+    ></Quote
+  >
+  <Pgh>
+    <b>Definición Técnica:</b> La Ingeniería de Prompts es la disciplina de diseñar
+    entradas textuales (inputs) óptimas para guiar a modelos de Inteligencia Artificial
+    Generativa hacia la producción de salidas (outputs) específicas, precisas y relevantes
+    pero sobre todo <u>previsibles</u>
+  </Pgh>
+
+  <Pgh>
+    Actualmente, estamos presenciando un cambio de paradigma, <b
+      >el lenguaje natural es el nuevo lenguaje de programación</b
+    >. No estamos escribiendo código en Python o C++ para definir reglas
+    rígidas; estamos usando prosa estructurada para guiar probabilidades. Es una
+    competencia híbrida que requiere la lógica algorítmica de un programador y
+    la claridad retórica de un lingüista. Pero ¿esto significa que los
+    programadores vamos a dejar de existir? No, para nada. Sin embargo este
+    proceso se democratiza cada vez más gracias a los avances en el campo de la
+    IA.
+  </Pgh>
+
+  <TituloTres ID={RecopOne}>El "Framework" de un Prompt Perfecto</TituloTres>
+  <Pgh>
+    Para pasar de la interacción casual a la ingeniería profesional, debemos
+    estructurar nuestros prompts. Un prompt robusto suele contener cinco
+    componentes clave. Pensemos en esto como la anatomía de una instrucción
+    perfecta:
+  </Pgh>
+
+  <Accordion>
+    <ATab ID="rol" titulo="Rol (Persona)">
+      <p>
+        Define quién es la IA durante la interacción. Esto ajusta el tono, el
+        vocabulario y la perspectiva del modelo.
+      </p><br />
+      <p class="text-center">
+        <em>Ejemplo:</em> "Adopta el rol de un Abogado Senior especializado en Derecho
+        Mercantil..."
+      </p>
+      <br />
+    </ATab>
+    <ATab ID="Contexto" titulo="Contexto"
+      ><p>
+        Proporciona el trasfondo necesario. Sin contexto, la IA "adivina"
+        basándose en probabilidades generales.
+      </p><br />
+      <p class="text-center">
+        <em>Ejemplo:</em> "Estamos asesorando a una Startup tecnológica que busca
+        su primera ronda de inversión..."
+      </p><br />
+    </ATab>
+    <ATab ID="tarea" titulo="Instrucción (La Tarea)"
+      ><p>
+        Es el verbo de acción. Debe ser <b>imperativa y clara</b>. Evita
+        términos ambiguos como "piensa sobre esto".
+      </p><br /><p class="text-center">
+        <em>Ejemplo:</em> "Redacta una cláusula de confidencialidad (NDA) estricta..."
+      </p><br />
+    </ATab>
+    <ATab ID="Restricciones" titulo="Restricciones"
+      ><p>
+        Establece los <em>límites</em>. Qué NO hacer o qué longitud respetar.
+        Esto reduce el ruido en la respuesta.
+      </p><br /><p class="text-center">
+        <em>Ejemplo:</em> "No excedas los 2 párrafos. Evita la jerga legal arcaica;
+        usa lenguaje claro."
+      </p>
+      <br />
+    </ATab>
+    <ATab ID="salida" titulo="Formato de Salida"
+      ><p>
+        Define <b>cómo</b> quieres ver la información. La IA no sabe si quieres un
+        poema o una tabla CSV a menos que se lo digas.
+      </p><br /><p class="text-center">
+        <em>Ejemplo:</em> "Presenta el resultado en una lista con viñetas (bullet
+        points) formato Markdown."
+      </p><br />
+    </ATab>
+  </Accordion>
+
+  <TituloTres ID={RecopTwo}>Técnicas y Estrategias</TituloTres>
+
+  <Pgh>
+    No todos los problemas se resuelven igual. Dependiendo de la complejidad,
+    usaremos diferentes estrategias de prompting:
+  </Pgh>
+
+  <Accordion>
+    <ATab ID="zero-shot" titulo="Zero-shot Prompting (Sin ejemplos)">
+      <p>
+        Es la forma más básica. Le pides a la IA que realice una tarea sin darle
+        ejemplos previos, confiando puramente en su entrenamiento base.
+      </p>
+      <ul class="list-disc pl-16 py-6">
+        <li><em>Uso:</em> Tareas sencillas de conocimiento general.</li>
+        <li>
+          <em>Comando:</em> "Clasifica este texto como positivo o negativo: 'El servicio
+          fue lento'."
+        </li>
+      </ul>
+    </ATab>
+    <ATab ID="few-shot" titulo="Few-shot Prompting (Con pocos ejemplos)"
+      ><p>
+        Aquí proporcionamos al modelo uno o más ejemplos de (Input -> Output)
+        dentro del prompt para que entienda el patrón deseado. Esto mejora
+        drásticamente el rendimiento en tareas específicas.
+        <ul class="list-disc pl-16 py-6">
+          <li>
+            <em>Analogía:</em> Es como mostrarle a un aprendiz cómo se llena un formulario
+            antes de pedirle que llene uno nuevo.
+          </li>
+          <li>
+            <em>Estructura:</em>
+            <br />
+            <p class="text-center">
+              Entrada: Rojo / Salida: Pasión <br /> Entrada: Azul / Salida: Calma
+              <br /> Entrada: Amarillo / Salida: ...
+            </p>
+          </li>
+        </ul>
+      </p>
+    </ATab>
+    <ATab
+      ID="Chain-of-Thought"
+      titulo="Chain-of-Thought (Cadena de Pensamiento)"
+      ><p>
+        Para problemas lógicos o matemáticos complejos, los LLMs tienden a
+        fallar si responden de inmediato. Esta técnica fuerza al modelo a
+        verbalizar su razonamiento paso a paso antes de dar la respuesta final.
+      </p>
+      <ul class="list-disc pl-16 py-6">
+        <li>
+          <em>Comando Mágico:</em> "<b>Piensa paso a paso</b>" o "Explica tu
+          razonamiento antes de concluir".
+        </li>
+        <li>
+          <em>Efecto:</em> Aumenta la precisión al permitir que el modelo genere pasos
+          intermedios de computación lógica.
+        </li>
+      </ul>
+    </ATab>
+  </Accordion>
+
+  <SigPag url="./pe-rafa" titulo="Metodología RAFA" tipo="sig" />
+</BaseLayout>
